@@ -1,0 +1,54 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "meta": {
+        "version": "PTDL_v2",
+        "update_url": null
+    },
+    "exported_at": "2026-06-28T05:51:00-03:00",
+    "name": "ItsMyBot",
+    "author": "egg@itsmy.studio",
+    "description": "ItsMyBot is a self-hosted modular Discord bot. Developed with TypeScript and Node.js, it is designed to be easily modifiable through an addon system.",
+    "features": [],
+    "docker_images": {
+        "Nodejs 24": "ghcr.io\/ptero-eggs\/yolks:nodejs_24",
+        "Nodejs 22": "ghcr.io\/ptero-eggs\/yolks:nodejs_22",
+        "Nodejs 20": "ghcr.io\/ptero-eggs\/yolks:nodejs_20"
+    },
+    "file_denylist": [],
+    "startup": "if [ -f \/home\/container\/package.json ]; then npm install --omit=dev --no-audit --no-fund; fi; node \"\/home\/container\/${MAIN_FILE}\" ${NODE_ARGS}",
+    "config": {
+        "files": "{}",
+        "startup": "{\r\n    \"done\": [\r\n        \"Bot ready\"\r\n    ]\r\n}",
+        "logs": "{}",
+        "stop": "^C"
+    },
+    "scripts": {
+        "installation": {
+            "script": "#!\/bin\/bash\r\n# ItsMyBot Egg - Installation Script\r\n\r\ncd \/mnt\/server\r\n\r\nif [ -f package.json ]; then\r\n    echo \"Installing dependencies...\"\r\n    npm install --omit=dev --no-audit --no-fund\r\nelse\r\n    echo \"No package.json found yet. Upload the bot files via SFTP, then start the server.\"\r\nfi\r\n\r\necho \"Installation completed.\"",
+            "container": "node:lts-trixie-slim",
+            "entrypoint": "bash"
+        }
+    },
+    "variables": [
+        {
+            "name": "Main File",
+            "description": "Select a file to start your bot from.",
+            "env_variable": "MAIN_FILE",
+            "default_value": "build\/index.js",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|max:200",
+            "field_type": "text"
+        },
+        {
+            "name": "Additional Arguments",
+            "description": "Additional arguments for Nodejs or TypeScript.",
+            "env_variable": "NODE_ARGS",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string|max:200",
+            "field_type": "text"
+        }
+    ]
+}
