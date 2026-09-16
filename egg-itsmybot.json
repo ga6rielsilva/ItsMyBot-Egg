@@ -4,7 +4,7 @@
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2026-06-28T05:51:00-03:00",
+    "exported_at": "2026-09-16T00:45:21-03:00",
     "name": "ItsMyBot",
     "author": "egg@itsmy.studio",
     "description": "ItsMyBot is a self-hosted modular Discord bot. Developed with TypeScript and Node.js, it is designed to be easily modifiable through an addon system.",
@@ -15,7 +15,7 @@
         "Nodejs 20": "ghcr.io\/ptero-eggs\/yolks:nodejs_20"
     },
     "file_denylist": [],
-    "startup": "if [ -f \/home\/container\/package.json ]; then npm install --omit=dev --no-audit --no-fund; fi; node \"\/home\/container\/${MAIN_FILE}\" ${NODE_ARGS}",
+    "startup": "if [ -f \/home\/container\/package.json ]; then npm install --no-audit --no-fund; fi; node \"\/home\/container\/${MAIN_FILE}\" ${NODE_ARGS}",
     "config": {
         "files": "{}",
         "startup": "{\r\n    \"done\": [\r\n        \"Bot ready\"\r\n    ]\r\n}",
